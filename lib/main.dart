@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'splash_screen.dart';
+import 'about_us.dart';
+import 'home.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -11,27 +13,26 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-            appBar: AppBar(
-              title: Text("Header"),
-              backgroundColor: Colors.cyan,
+      initialRoute: '/splash', // Start with Splash
+      title: 'বাংলাদেশের বিভাগ সমুহ',
+        theme: ThemeData(
+          primaryColor: const Color(0xFF4CAF50),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Color(0xFF4CAF50),
+            centerTitle: true,
+            titleTextStyle: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
             ),
-            body: GridView.count(
-              crossAxisCount:2,
-              childAspectRatio: 1.0,
-              children: [
-                Container(color: Colors.red,),
-                Container(color: Colors.green,),
-                Container(color: Colors.blue,),
-                Container(color: Colors.red,),
-                Container(color: Colors.green,),
-                Container(color: Colors.blue,),
-                Container(color: Colors.red,),
-                Container(color: Colors.green,),
-                Container(color: Colors.blue,),
-              ],
-            )
-          )
+          ),
+        ),
+      home: const HomePage(),
+      routes: {
+        '/splash': (context) => const SplashScreen(),
+        '/about-us': (context) => const AboutUsPage(),
+      },
     );
   }
 }
+
